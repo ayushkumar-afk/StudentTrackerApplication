@@ -1,0 +1,9 @@
+com\example\StudentTrackerApplication\modals\AdminEntity.class
+com\example\StudentTrackerApplication\repository\IAdmin.class
+com\example\StudentTrackerApplication\StudentTrackerApplication.class
+com\example\StudentTrackerApplication\modals\StudentEntity.class
+com\example\StudentTrackerApplication\repository\IStudent.class
+com\example\StudentTrackerApplication\controller\PageController.class
+com\example\StudentTrackerApplication\service\TaskService.class
+com\example\StudentTrackerApplication\repository\ITask.class
+com\example\StudentTrackerApplication\modals\TaskEntity.class
