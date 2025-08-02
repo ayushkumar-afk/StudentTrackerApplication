@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>All Tasks | Task Manager</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../css/dropdown-panel.css" />
+</head>
+
+<body>
+    <header class="main-header">
+        <div class="logo">🗂 Task Manager</div>
+        <div class="header-right">
+            <span class="role">Logged in as: <span id="roleLabel"></span></span>
+            <button onclick="logout()" class="btn logout-btn">Logout</button>
+        </div>
+    </header>
+    <nav class="main-navbar">
+        <ul>
+            <li><a href="welcome.html">Welcome</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="all-tasks.html" class="active">All Tasks</a></li>
+            <li><a href="#" id="nav-completed-tasks">Completed Tasks</a></li>
+        </ul>
+    </nav>
+    <main class="container">
+        <section class="task-table-section">
+            <div class="table-header">
+                <h2>📋 Task List</h2>
+                <div class="nav-buttons">
+                    <button onclick="toggleAddTaskDropdown()" class="btn btn-primary" id="openAddTaskDropdownBtn">Add
+                        Task</button>
+                </div>
+                <div id="addTaskDropdown" class="dropdown-panel" style="display:none;">
+                    <form id="taskFormDropdown">
+                        <div class="form-group">
+                            <input type="text" id="taskTitleDropdown" placeholder="Task Name" required />
+                            <input type="text" id="taskAssigneeDropdown" placeholder="Assigned To (Student)" required />
+                        </div>
+                        <div class="form-group">
+                            <input type="date" id="taskDeadlineDropdown" required />
+                            <select id="taskStatusDropdown">
+                                <option value="Not Started">Not Started</option>
+                                <option value="In Progress">In Progress</option>
+                                <option value="Delayed">Delayed</option>
+                                <option value="Completed">Completed</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save Task</button>
+                    </form>
+                </div>
+            </div>
+            <button class="btn status-nav-toggle" onclick="toggleStatusNavMenu(event)">
+                <span class="material-icons">menu</span>
+            </button>
+            <div class="status-nav">
+                <button onclick="showAllTasks()" class="btn status-tab" id="tab-all">All</button>
+                <button onclick="showStatusTasks('Not Started')" class="btn status-tab" id="tab-notstarted">Not
+                    Started</button>
+                <button onclick="showStatusTasks('In Progress')" class="btn status-tab" id="tab-inprogress">In
+                    Progress</button>
+                <button onclick="showStatusTasks('Delayed')" class="btn status-tab" id="tab-delayed">Delayed</button>
+                <button onclick="showStatusTasks('Completed')" class="btn status-tab"
+                    id="tab-completed">Completed</button>
+            </div>
+            <div class="task-table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Serial No.</th>
+                            <th>Task</th>
+                            <th>Student</th>
+                            <th>Status</th>
+                            <th>Deadline</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="taskTableBody"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+    <div id="taskModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close" id="closeTaskModal">&times;</span>
+            <h2 id="modalTitle">Add Task</h2>
+            <form id="taskForm">
+                <div class="form-group">
+                    <input type="text" id="taskTitle" placeholder="Task Name" required />
+                    <input type="text" id="taskAssignee" placeholder="Assigned To (Student)" required />
+                </div>
+                <div class="form-group">
+                    <input type="date" id="taskDeadline" required />
+                    <select id="taskStatus">
+                        <option value="Not Started">Not Started</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Delayed">Delayed</option>
+                        <option value="Completed">Completed</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Save Task</button>
+            </form>
+        </div>
+    </div>
+    <div id="taskDetailsModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close" id="closeTaskDetailsModal">&times;</span>
+            <h2>Task Details</h2>
+            <div id="taskDetailsContent"></div>
+        </div>
+    </div>
+    <script src="../js/script.js"></script>
+    <script>
+        // Support ?filter=completed to show only completed tasks on load
+        function showCompletedIfNeeded() {
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('filter') === 'completed') {
+                if (typeof showCompletedTasks === 'function') showCompletedTasks();
+                var completedTab = document.getElementById('tab-completed');
+                if (completedTab) setTimeout(() => completedTab.classList.add('active'), 10);
+                window.scrollTo({ top: document.querySelector('.task-table-section').offsetTop - 60, behavior: 'smooth' });
+            }
+        }
+        document.getElementById('nav-completed-tasks').onclick = function (e) {
+            e.preventDefault();
+            if (typeof showCompletedTasks === 'function') showCompletedTasks();
+            var completedTab = document.getElementById('tab-completed');
+            if (completedTab) setTimeout(() => completedTab.classList.add('active'), 10);
+            window.scrollTo({ top: document.querySelector('.task-table-section').offsetTop - 60, behavior: 'smooth' });
+        };
+        window.addEventListener('DOMContentLoaded', showCompletedIfNeeded);
+    </script>
+</body>
+
+</html>

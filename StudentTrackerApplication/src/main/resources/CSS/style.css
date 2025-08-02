@@ -1,0 +1,365 @@
+/* ...existing code from style.css... */
+body,
+input,
+select,
+button {
+    font-family: 'Segoe UI', sans-serif;
+    box-sizing: border-box;
+}
+
+.auth-body {
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.auth-box {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    width: 350px;
+}
+
+.auth-box h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.auth-box input,
+.auth-box select {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.btn {
+    padding: 8px 14px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #28a745;
+}
+
+.logout-btn {
+    background-color: #dc3545;
+}
+
+.main-header {
+    background: #1e1e2f;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-navbar {
+    background: #23405c;
+    padding: 0 0 0 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.main-navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 0;
+}
+
+.main-navbar li {
+    margin: 0;
+}
+
+.main-navbar a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 16px 28px;
+    font-weight: 500;
+    transition: background 0.2s, color 0.2s;
+}
+
+.main-navbar a:hover,
+.main-navbar a.active {
+    background: #174a7c;
+    color: #ffd700;
+}
+
+.container {
+    padding: 20px;
+}
+
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.status-badge {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.status-completed {
+    background-color: #28a745;
+    color: white;
+}
+
+.status-delayed {
+    background-color: #dc3545;
+    color: white;
+}
+
+.status-in-progress {
+    background-color: #ffc107;
+    color: black;
+}
+
+.status-not-started {
+    background-color: #6c757d;
+    color: white;
+}
+
+.status-nav {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.status-tab.active {
+    background: #007bff;
+    color: #fff;
+    font-weight: bold;
+    border-bottom: 2px solid #0056b3;
+}
+
+.status-tab {
+    background: #f1f1f1;
+    color: #333;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 4px 4px 0 0;
+    transition: background 0.2s;
+}
+
+.status-tab:not(.active):hover {
+    background: #e2e6ea;
+}
+
+.task-details-section {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+    padding: 32px 24px;
+    max-width: 500px;
+    margin: 40px auto;
+}
+
+#taskDetails p {
+    font-size: 1.1rem;
+    margin: 18px 0;
+    padding: 12px 16px;
+    background: #f7f9fa;
+    border-radius: 6px;
+    border-left: 4px solid #007bff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+#taskDetails strong {
+    color: #1e1e2f;
+    min-width: 120px;
+    display: inline-block;
+}
+
+/* Icon Button Styles */
+/* @import url('https://fonts.googleapis.com/icon?family=Material+Icons'); */
+
+.icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px 8px;
+    border-radius: 4px;
+    transition: background 0.2s;
+    vertical-align: middle;
+}
+
+.icon-btn:hover {
+    background: #f0f2f5;
+}
+
+.icon-btn .material-icons {
+    font-size: 22px;
+    color: #007bff;
+    vertical-align: middle;
+}
+
+.icon-btn.delete-btn .material-icons {
+    color: #dc3545;
+}
+
+.icon-btn[title="Edit"] .material-icons {
+    color: #28a745;
+}
+
+/* Task Table Container */
+.task-table-container {
+    max-height: 400px;
+    overflow-y: auto;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    margin-top: 20px;
+}
+
+/* Optional: Keep table header fixed */
+.task-table-container table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.task-table-container thead th {
+    position: sticky;
+    top: 0;
+    background: #f7f7f7;
+    z-index: 2;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .auth-box {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .main-header,
+    .table-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .header-right {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .task-table-section {
+        overflow-x: auto;
+    }
+
+    table {
+        min-width: 600px;
+    }
+}
+
+@media (max-width: 600px) {
+    .auth-box {
+        width: 100%;
+        padding: 10px;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .main-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    .container {
+        padding: 8px;
+    }
+
+    .table-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .nav-buttons {
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
+    }
+
+    table,
+    th,
+    td {
+        font-size: 14px;
+    }
+
+    .status-nav {
+        display: none;
+    }
+
+    .status-nav-toggle {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .status-tab {
+        width: 100%;
+        margin-bottom: 4px;
+    }
+
+    .dropdown-panel {
+        width: 100%;
+        left: 0 !important;
+        right: 0 !important;
+    }
+
+    .task-table-section {
+        overflow-x: auto;
+    }
+
+    table {
+        min-width: 600px;
+    }
+}
+
+@media (max-width: 400px) {
+
+    .main-header,
+    .container,
+    .auth-box {
+        padding: 4px;
+    }
+
+    th,
+    td {
+        padding: 4px;
+    }
+}
+
+@media (min-width: 601px) {
+    .status-nav-toggle {
+        display: none;
+    }
+}

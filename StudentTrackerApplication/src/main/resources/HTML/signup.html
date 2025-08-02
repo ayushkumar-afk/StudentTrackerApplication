@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Signup - Task Manager</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script>
+        // Redirect to welcome page if user is already authenticated, unless coming from welcome page
+        document.addEventListener('DOMContentLoaded', function () {
+            const params = new URLSearchParams(window.location.search);
+            const fromWelcome = params.get('from') === 'welcome';
+            const user = localStorage.getItem('user');
+            if (!user && !fromWelcome) {
+                // Not authenticated, redirect to welcome page
+                window.location.href = 'welcome.html';
+            }
+        });
+    </script>
+</head>
+
+<body class="auth-body">
+    <div class="auth-box">
+        <h2>Signup</h2>
+        <form id="signupForm">
+            <input type="text" id="signupName" placeholder="Full Name" required />
+            <input type="text" id="signupUsername" placeholder="Username" required />
+            <input type="email" id="signupEmail" placeholder="Email" required />
+            <input type="password" id="signupPassword" placeholder="Password" required />
+            <select id="signupRole" required>
+                <option value="">Select Role</option>
+                <option value="Admin">Admin</option>
+                <option value="Client">Client</option>
+            </select>
+            <button type="submit" class="btn btn-primary">Signup</button>
+            <p>Already have an account? <a href="login.html">Login here</a></p>
+        </form>
+    </div>
+    <script src="../js/auth.js"></script>
+</body>
+
+</html>
