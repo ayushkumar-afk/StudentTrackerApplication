@@ -1,4 +1,5 @@
 package com.example.StudentTrackerApplication.modals;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
@@ -74,6 +75,7 @@ public class TaskEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "task_id")
     private Long id;
 
     @Column(nullable = false)
@@ -84,6 +86,7 @@ public class TaskEntity {
 
     @ManyToOne
     @JoinColumn(name = "admin_id", nullable = false)
+
     private AdminEntity assignedBy;
 
     @ManyToOne

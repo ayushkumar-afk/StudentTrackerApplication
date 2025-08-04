@@ -23,4 +23,9 @@ public class StudentService implements StudentServiceImpl {
     public List<StudentEntity> getAllStudent() {
         return StudentRespository.findAll();
     }
+
+    @Override
+    public StudentEntity getStudentbyUsername(String studentEmailId) {
+        return StudentRespository.findByStudentEmailId(studentEmailId).orElseThrow(()-> new RuntimeException("Student not Found"));
+    }
 }

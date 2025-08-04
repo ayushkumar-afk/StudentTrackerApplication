@@ -9,6 +9,6 @@ import java.util.List;
 public interface AdminService {
     AdminEntity createAdmin(AdminEntity admin);
     List<AdminEntity> getAllAdmins();
-
+    AdminEntity getAdminByUsername(String username);
 
 }

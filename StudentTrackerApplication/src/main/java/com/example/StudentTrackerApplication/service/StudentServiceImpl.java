@@ -9,4 +9,5 @@ import java.util.List;
 public interface StudentServiceImpl {
     StudentEntity createStudent(StudentEntity student);
     List<StudentEntity> getAllStudent();
+    StudentEntity getStudentbyUsername(String username);
 }

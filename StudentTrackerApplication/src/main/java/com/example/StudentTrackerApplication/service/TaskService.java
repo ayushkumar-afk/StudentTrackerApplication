@@ -9,6 +9,7 @@ import com.example.StudentTrackerApplication.repository.ITask;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -30,17 +31,22 @@ public class TaskService implements TaskServiceImpl {
     public TaskEntity assignTask(TaskEntity task, Long adminId, Long StudentId) {
        AdminEntity admin  = adminRepository.findById(adminId).orElseThrow(()-> new RuntimeException("Admin Not Found"));
        StudentEntity student  = studentReposripry.findById(StudentId).orElseThrow(()-> new RuntimeException("Student Not Found"));
-       
-        return  null;
+        task.setAssignedBy(admin);
+        task.setAssignedTo(student);
+        task.setAssignedAt(LocalDateTime.now());
+        task.setCompleted(false);
+
+        return taskReposripry.save(task) ;
     }
 
     @Override
-    public List<TaskEntity> getTaskbyAdmin(Long AdminId) {
-        return List.of();
+    public List<TaskEntity> getTaskbyAdmin(Long adminId) {
+        return taskReposripry.findByAssignedById(adminId);
     }
 
     @Override
-    public List<TaskEntity> getTaskbyStudent(Long StudentId) {
-        return List.of();
+    public List<TaskEntity> getTaskbyStudent(Long studentId) {
+        return taskReposripry.findByAssignedToId(studentId);
     }
+
 }
